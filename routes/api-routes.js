@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { v4: uuidv4 } = require('uuid');
+const uuid = require('uuid');
 const fs = require('fs');
 
 router.get('/api/notes', async (req, res) => {
@@ -12,7 +12,7 @@ router.post('/api/notes', (req, res) => {
   const data = fs.readFileSync('db/db.json', 'utf8');
   const notes = JSON.parse(data);
   const newNote = {
-    id: uuidv4(),
+    id: uuid(),
     title: req.body.title,
     text: req.body.text,
   };
